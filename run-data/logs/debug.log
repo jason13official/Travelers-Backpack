@@ -328,7 +328,7 @@
 [01May2024 00:53:47.067] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for travelersbackpack
 [01May2024 00:53:47.072] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.tiviacz.travelersbackpack.config.TravelersBackpackConfig to MOD
 [01May2024 00:53:47.074] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for balm
-[01May2024 00:53:47.079] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.tiviacz.travelersbackpack.handlers.ClientEventHandler to FORGE
+[01May2024 00:53:47.079] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.tiviacz.travelersbackpack.handlers.ForgeClientEventHandler to FORGE
 [01May2024 00:53:47.086] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.tiviacz.travelersbackpack.handlers.ForgeEventHandler to FORGE
 [01May2024 00:53:47.099] [modloading-worker-0/DEBUG] [mixin/]: Mixing ReloadableServerResourcesMixin from balm.forge.mixins.json into net.minecraft.server.ReloadableServerResources
 [01May2024 00:53:47.099] [modloading-worker-0/DEBUG] [mixin/]: Renaming synthetic method lambda$loadResources$0(Lnet/minecraft/server/ReloadableServerResources;)V to md599219$lambda$loadResources$0$0 in balm.forge.mixins.json:ReloadableServerResourcesMixin
@@ -407,7 +407,7 @@ java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent
 [01May2024 00:53:47.156] [modloading-worker-0/DEBUG] [io.netty.util.internal.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): available
 [01May2024 00:53:47.156] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
 [01May2024 00:53:47.183] [modloading-worker-0/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/Explosion
-[01May2024 00:53:47.189] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.tiviacz.travelersbackpack.handlers.ModClientEventsHandler to MOD
+[01May2024 00:53:47.189] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.tiviacz.travelersbackpack.handlers.ModClientEventHandler to MOD
 [01May2024 00:53:47.193] [modloading-worker-0/DEBUG] [net.minecraftforge.network.NetworkInitialization/FORGE_NETWORK]: Registering Network forge:login v0
 [01May2024 00:53:47.193] [modloading-worker-0/DEBUG] [net.minecraftforge.network.NetworkInitialization/FORGE_NETWORK]: Registering Network forge:handshake v0
 [01May2024 00:53:47.193] [modloading-worker-0/DEBUG] [net.minecraftforge.network.NetworkInitialization/FORGE_NETWORK]: Registering Network minecraft:register v0

@@ -98,9 +98,9 @@ public class TravelersBackpack
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
-        ModClientEventHandler.registerScreenFactory();
-        ModClientEventHandler.bindTileEntityRenderer();
-        ModClientEventHandler.registerItemModelProperty();
+        ModClientEventHandler.registerScreenFactories();
+        ModClientEventHandler.registerBlockEntityRenderers();
+        ModClientEventHandler.registerItemModelProperties();
     }
 
     private void onFinish(final FMLLoadCompleteEvent event)
