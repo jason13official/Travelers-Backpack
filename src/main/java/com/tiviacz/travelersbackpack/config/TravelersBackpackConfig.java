@@ -1,20 +1,11 @@
 package com.tiviacz.travelersbackpack.config;
 
-import com.tiviacz.travelersbackpack.TravelersBackpack;
-import com.tiviacz.travelersbackpack.datagen.ModLootTableProvider;
-import com.tiviacz.travelersbackpack.datagen.ModRecipeProvider;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -23,7 +14,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-@Mod.EventBusSubscriber(modid = TravelersBackpack.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TravelersBackpackConfig
 {
     //Backpack Settings
@@ -563,7 +553,7 @@ public class TravelersBackpackConfig
     }
 
     //COMMON
-    private static final ForgeConfigSpec commonSpec;
+    public static final ForgeConfigSpec commonSpec;
     public static final Common COMMON;
 
     static {
@@ -573,7 +563,7 @@ public class TravelersBackpackConfig
     }
 
     //CLIENT
-    private static final ForgeConfigSpec clientSpec;
+    public static final ForgeConfigSpec clientSpec;
     public static final Client CLIENT;
 
     static {
@@ -587,19 +577,6 @@ public class TravelersBackpackConfig
     {
         context.registerConfig(ModConfig.Type.COMMON, commonSpec);
         context.registerConfig(ModConfig.Type.CLIENT, clientSpec);
-    }
-
-    @SubscribeEvent
-    public static void onModConfigEvent(final ModConfigEvent.Loading configEvent)
-    {
-        if(configEvent.getConfig().getSpec() == TravelersBackpackConfig.commonSpec)
-        {
-            bakeCommonConfig();
-        }
-        if(configEvent.getConfig().getSpec() == TravelersBackpackConfig.clientSpec)
-        {
-            bakeClientConfig();
-        }
     }
 
     public static void bakeCommonConfig()
@@ -663,17 +640,5 @@ public class TravelersBackpackConfig
         enableOverlay = CLIENT.overlay.enableOverlay.get();
         offsetX = CLIENT.overlay.offsetX.get();
         offsetY = CLIENT.overlay.offsetY.get();
-    }
-
-    //GATHER DATA
-    @SubscribeEvent
-    public static void onGatherData(GatherDataEvent event)
-    {
-        DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
-        boolean includeServer = event.includeServer();
-
-        generator.addProvider(includeServer, new ModRecipeProvider(output));
-        generator.addProvider(includeServer, ModLootTableProvider.create(output));
     }
 }
