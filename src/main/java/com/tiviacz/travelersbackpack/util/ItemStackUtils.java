@@ -10,7 +10,7 @@ public class ItemStackUtils
     {
         //Hose patch
         if(stack1.getItem() instanceof HoseItem && stack1.is(stack2.getItem())) return true;
-        
+
         return ItemStack.isSameItem(stack1, stack2) && tagMatches(stack1, stack2);
     }
 
