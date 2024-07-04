@@ -76,10 +76,13 @@ public class TravelersBackpackCurios
     {
         if(TravelersBackpack.enableCurios())
         {
-            int backpackSlot = CuriosApi.getCuriosHelper().findFirstCurio(player, p -> ItemStack.isSameItemSameTags(p, stack)).get().slotContext().index();
+            if(CuriosApi.getCuriosHelper().findFirstCurio(player, p -> ItemStack.isSameItemSameTags(p, stack)).isPresent())
+            {
+                int backpackSlot = CuriosApi.getCuriosHelper().findFirstCurio(player, p -> ItemStack.isSameItemSameTags(p, stack)).get().slotContext().index();
 
-            CuriosApi.getCuriosHelper().getCuriosHandler(player).map(iCuriosItemHandler -> iCuriosItemHandler.getStacksHandler(SlotTypePreset.BACK.getIdentifier()))
-                    .ifPresent(iCurioStacksHandler -> iCurioStacksHandler.get().getStacks().setStackInSlot(backpackSlot, ItemStack.EMPTY));
+                CuriosApi.getCuriosHelper().getCuriosHandler(player).map(iCuriosItemHandler -> iCuriosItemHandler.getStacksHandler(SlotTypePreset.BACK.getIdentifier()))
+                        .ifPresent(iCurioStacksHandler -> iCurioStacksHandler.get().getStacks().setStackInSlot(backpackSlot, ItemStack.EMPTY));
+            }
         }
     }
 
