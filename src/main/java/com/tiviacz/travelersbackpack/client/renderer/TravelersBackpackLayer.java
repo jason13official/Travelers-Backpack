@@ -52,7 +52,24 @@ public class TravelersBackpackLayer extends RenderLayer<AbstractClientPlayer, Pl
 
             if(inv != null && !clientPlayer.isInvisible())
             {
-                if(TravelersBackpack.enableCurios())
+                if(inv != null && !clientPlayer.isInvisible())
+                {
+                    boolean curiosIntegration = TravelersBackpack.enableCurios();
+
+                    if(curiosIntegration)
+                    {
+                        if(!TravelersBackpackCurios.renderCurioLayer(clientPlayer))
+                        {
+                            return;
+                        }
+                    }
+
+                    if(!curiosIntegration && !TravelersBackpackConfig.CLIENT.renderBackpackWithElytra.get() && clientPlayer.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem) return;
+
+                    renderLayer(poseStack, bufferIn, packedLightIn, clientPlayer, inv, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
+                }
+
+                /*if(TravelersBackpack.enableCurios())
                 {
                     if(TravelersBackpackCurios.getCurioTravelersBackpack(clientPlayer).isPresent())
                     {
@@ -92,7 +109,7 @@ public class TravelersBackpackLayer extends RenderLayer<AbstractClientPlayer, Pl
                 else
                 {
                     renderLayer(poseStack, bufferIn, packedLightIn, clientPlayer, inv, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
-                }
+                } */
             }
         }
     }

@@ -18,6 +18,7 @@ import com.tiviacz.travelersbackpack.commands.UnpackBackpackCommand;
 import com.tiviacz.travelersbackpack.common.BackpackAbilities;
 import com.tiviacz.travelersbackpack.common.recipes.BackpackDyeRecipe;
 import com.tiviacz.travelersbackpack.common.recipes.ShapedBackpackRecipe;
+import com.tiviacz.travelersbackpack.compat.curios.TravelersBackpackCurios;
 import com.tiviacz.travelersbackpack.config.TravelersBackpackConfig;
 import com.tiviacz.travelersbackpack.init.ModItems;
 import com.tiviacz.travelersbackpack.init.ModTags;
@@ -144,10 +145,7 @@ public class ForgeEventHandler
 
                             if(TravelersBackpack.enableCurios())
                             {
-                                int backpackSlot = CuriosApi.getCuriosHelper().findFirstCurio(player, p -> ItemStack.isSameItemSameTags(p, backpackStack)).get().slotContext().index();
-
-                                CuriosApi.getCuriosHelper().getCuriosHandler(player).map(iCuriosItemHandler -> iCuriosItemHandler.getStacksHandler(SlotTypePreset.BACK.getIdentifier()))
-                                        .ifPresent(iCurioStacksHandler -> iCurioStacksHandler.get().getStacks().setStackInSlot(backpackSlot, ItemStack.EMPTY));
+                                TravelersBackpackCurios.rightClickUnequip(player, backpackStack);
                             }
 
                             CapabilityUtils.synchronise(player);
@@ -250,10 +248,44 @@ public class ForgeEventHandler
 
         if(event.getLevel().isClientSide) return;
 
-        // Equip Backpack on right click with any item in hand //#TODO CHECK
+        // Equip Backpack on right click with any item in hand
         if(TravelersBackpackConfig.enableBackpackBlockWearable && event.getLevel().getBlockState(event.getPos()).getBlock() instanceof TravelersBackpackBlock block)
         {
             if(player.isShiftKeyDown() && !CapabilityUtils.isWearingBackpack(player))
+            {
+                TravelersBackpackBlockEntity blockEntity = (TravelersBackpackBlockEntity)level.getBlockEntity(pos);
+                ItemStack backpack = new ItemStack(block, 1);
+
+                Direction bagDirection = level.getBlockState(pos).getValue(TravelersBackpackBlock.FACING);
+
+                boolean canEquipCurio;
+                if(TravelersBackpack.enableCurios())
+                {
+                    canEquipCurio = TravelersBackpackCurios.rightClickEquip(player, backpack, true);
+                    if(!canEquipCurio) return;
+                }
+
+                if(level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState()))
+                {
+                    blockEntity.transferToItemStack(backpack);
+
+                    if(TravelersBackpack.enableCurios()) TravelersBackpackCurios.rightClickEquip(player, backpack, false);
+                    else CapabilityUtils.equipBackpack(event.getEntity(), backpack);
+
+                    player.swing(InteractionHand.MAIN_HAND, true);
+
+                    if(blockEntity.isSleepingBagDeployed())
+                    {
+                        level.setBlockAndUpdate(pos.relative(bagDirection), Blocks.AIR.defaultBlockState());
+                        level.setBlockAndUpdate(pos.relative(bagDirection).relative(bagDirection), Blocks.AIR.defaultBlockState());
+                    }
+                    event.setCancellationResult(InteractionResult.SUCCESS);
+                    event.setCanceled(true);
+                    return;
+                }
+            }
+
+        /*    if(player.isShiftKeyDown() && !CapabilityUtils.isWearingBackpack(player))
             {
                 TravelersBackpackBlockEntity blockEntity = (TravelersBackpackBlockEntity)level.getBlockEntity(pos);
                 ItemStack backpack = new ItemStack(block, 1);
@@ -319,7 +351,7 @@ public class ForgeEventHandler
                         }
                     }));
                 }
-            }
+            } */
         }
 
         //Wash colored backpack in cauldron
