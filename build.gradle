@@ -175,6 +175,8 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:${jei_version}")
 
+    runtimeOnly fg.deobf("curse.maven:corailtombstone-243707:5395199")
+
     //EMI
    // compileOnly fg.deobf("dev.emi:emi-forge:${emi_version}:api")
     //runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
