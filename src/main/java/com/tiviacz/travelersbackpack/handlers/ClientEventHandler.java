@@ -10,7 +10,6 @@ import com.tiviacz.travelersbackpack.items.TravelersBackpackItem;
 import com.tiviacz.travelersbackpack.network.ServerboundAbilitySliderPacket;
 import com.tiviacz.travelersbackpack.network.ServerboundSpecialActionPacket;
 import com.tiviacz.travelersbackpack.util.Reference;
-import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
