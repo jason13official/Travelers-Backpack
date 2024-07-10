@@ -167,6 +167,8 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+
+    maven { url 'https://api.modrinth.com/maven' }
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
@@ -202,6 +204,9 @@ dependencies {
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
 
     runtimeOnly fg.deobf('curse.maven:carry-on-274259:4882500')
+
+    //Comforts
+    compileOnly fg.deobf("maven.modrinth:comforts:gBDsc134")
 
    // runtimeOnly fg.deobf('curse.maven:terrablender-563928:5068218')
     //runtimeOnly fg.deobf('curse.maven:bop-220318:4764804')
