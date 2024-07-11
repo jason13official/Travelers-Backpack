@@ -184,7 +184,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 
     runtimeOnly fg.deobf('curse.maven:balm-531761:4943500')
@@ -221,8 +221,8 @@ dependencies {
    // runtimeOnly fg.deobf("curse.maven:moonlight-499980:4734063")
     //runtimeOnly fg.deobf("curse.maven:the-hammers-mod-632142:4635811")
 
-    //runtimeOnly fg.deobf("curse.maven:corpse-316582:4584202")
-    //runtimeOnly fg.deobf("curse.maven:gravestone-238551:4584214")
+    //runtimeOnly fg.deobf("curse.maven:corpse-316582:5157034")
+    //runtimeOnly fg.deobf("curse.maven:gravestone-238551:5197326")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
      //compileOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}:api") // Adds JEI API as a compile dependency

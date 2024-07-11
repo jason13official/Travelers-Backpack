@@ -472,6 +472,7 @@ public class TravelersBackpackConfig
 
     public static class Client
     {
+        public final ForgeConfigSpec.BooleanValue sendBackpackCoordinatesMessage;
         public final ForgeConfigSpec.BooleanValue enableLegacyGui;
         public final ForgeConfigSpec.BooleanValue enableToolCycling;
         public final ForgeConfigSpec.BooleanValue disableScrollWheel;
@@ -485,6 +486,10 @@ public class TravelersBackpackConfig
         {
             builder.comment("Client-only settings")
                     .push("client");
+
+            sendBackpackCoordinatesMessage = builder
+                                        .comment("Sends a message to the player on death with backpack coordinates")
+                                        .define("sendBackpackCoordinatesMessage", true);
 
             enableLegacyGui = builder
                                         .comment("Enables legacy GUI (Blue slots for storage, brown for crafting and green for tools)")
