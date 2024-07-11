@@ -542,7 +542,7 @@ public class ForgeEventHandler
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onPlayerDrops(LivingDropsEvent event)
     {
         if(event.getEntity() instanceof Player player)
