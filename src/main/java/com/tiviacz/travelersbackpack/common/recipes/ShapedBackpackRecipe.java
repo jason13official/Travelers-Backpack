@@ -6,7 +6,6 @@ import com.tiviacz.travelersbackpack.blocks.SleepingBagBlock;
 import com.tiviacz.travelersbackpack.compat.comforts.ComfortsCompat;
 import com.tiviacz.travelersbackpack.init.ModTags;
 import com.tiviacz.travelersbackpack.inventory.ITravelersBackpackContainer;
-import com.tiviacz.travelersbackpack.items.SleepingBagItem;
 import com.tiviacz.travelersbackpack.items.TravelersBackpackItem;
 import com.tiviacz.travelersbackpack.util.RecipeUtils;
 import net.minecraft.core.NonNullList;
