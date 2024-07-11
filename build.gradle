@@ -163,6 +163,8 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+
+    maven { url 'https://api.modrinth.com/maven' }
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
@@ -202,7 +204,8 @@ dependencies {
     compileOnly fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
     compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
-    //implementation(fg.deobf("curse.maven:create-328085:4550986"));
+
+    //runtimeOnly fg.deobf("maven.modrinth:create:kvDi1uyh");
 
     //runtimeOnly fg.deobf("curse.maven:corpse-316582:3694258")
     //runtimeOnly fg.deobf("curse.maven:gravestone-238551:3713957")

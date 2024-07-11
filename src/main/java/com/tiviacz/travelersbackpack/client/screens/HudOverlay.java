@@ -25,41 +25,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class OverlayScreen
+public class HudOverlay
 {
-    static float animationProgress = 0.0F;
+    public static final ResourceLocation OVERLAY = new ResourceLocation(TravelersBackpack.MODID, "textures/gui/travelers_backpack_overlay.png");
+    private static float animationProgress = 0.0F;
 
     public static void renderOverlay(ForgeIngameGui gui, Minecraft mc, PoseStack matrixStack)
     {
         Player player = mc.player;
         Window mainWindow = mc.getWindow();
 
-        //RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        //RenderSystem.disableLighting();
-        //RenderSystem.enableAlphaTest();
-        //RenderSystem.disableBlend();
-
-        int offsetX = TravelersBackpackConfig.offsetX;
-        int offsetY = TravelersBackpackConfig.offsetY;
-        int scaledWidth = mainWindow.getGuiScaledWidth() - offsetX;
-        int scaledHeight = mainWindow.getGuiScaledHeight() - offsetY;
+        int scaledWidth = mainWindow.getGuiScaledWidth() - TravelersBackpackConfig.CLIENT.overlay.offsetX.get();
+        int scaledHeight = mainWindow.getGuiScaledHeight() - TravelersBackpackConfig.CLIENT.overlay.offsetY.get();
 
         int textureX = 10;
         int textureY = 0;
 
         ITravelersBackpackContainer inv = CapabilityUtils.getBackpackInv(player);
-        FluidTank rightTank = inv.getRightTank();
-        FluidTank leftTank = inv.getLeftTank();
-
-        if(!rightTank.getFluid().isEmpty())
-        {
-            drawGuiTank(matrixStack, rightTank, scaledWidth + 1, scaledHeight, 21, 8);
-        }
-
-        if(!leftTank.getFluid().isEmpty())
-        {
-            drawGuiTank(matrixStack, leftTank, scaledWidth - 11, scaledHeight, 21, 8);
-        }
 
         KeyMapping key = ModClientEventHandler.CYCLE_TOOL;
         List<ItemStack> tools = getTools(inv.getToolSlotsHandler());
@@ -101,11 +83,19 @@ public class OverlayScreen
             }
         }
 
-        ResourceLocation texture = new ResourceLocation(TravelersBackpack.MODID, "textures/gui/travelers_backpack_overlay.png");
+        if(!inv.getRightTank().getFluid().isEmpty())
+        {
+            drawGuiTank(matrixStack, inv.getRightTank(), scaledWidth + 1, scaledHeight, 21, 8);
+        }
+
+        if(!inv.getLeftTank().getFluid().isEmpty())
+        {
+            drawGuiTank(matrixStack, inv.getLeftTank(), scaledWidth - 11, scaledHeight, 21, 8);
+        }
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, texture);
+        RenderSystem.setShaderTexture(0, OVERLAY);
 
         if(player.getMainHandItem().getItem() instanceof HoseItem)
         {
@@ -144,13 +134,10 @@ public class OverlayScreen
         RenderUtils.renderScreenTank(matrixStackIn, tank, startX, startY, 0, height, width);
     }
 
-    //I don't undestand rendering itemstack into gui at all, if I'm missing something crucial PR is appreciated
     private static void drawItemStack(ItemRenderer itemRenderer, ItemStack stack, int x, int y)
     {
-        //RenderHelper.enableStandardItemLighting();
         itemRenderer.renderGuiItem(stack, x, y);
         itemRenderer.renderGuiItemDecorations(Minecraft.getInstance().font, stack, x, y);
-        //RenderHelper.disableStandardItemLighting();
     }
 
     public static List<ItemStack> getTools(ItemStackHandler inventory)
