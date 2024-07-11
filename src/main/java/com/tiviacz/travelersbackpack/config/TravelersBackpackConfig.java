@@ -78,10 +78,10 @@ public class TravelersBackpackConfig
     {
         private static final String REGISTRY_NAME_MATCHER = "([a-z0-9_.-]+:[a-z0-9_/.-]+)";
 
-        BackpackSettings backpackSettings;
-        World world;
-        BackpackAbilities backpackAbilities;
-        SlownessDebuff slownessDebuff;
+        public final BackpackSettings backpackSettings;
+        public final World world;
+        public final BackpackAbilities backpackAbilities;
+        public final SlownessDebuff slownessDebuff;
 
         Common(final ForgeConfigSpec.Builder builder)
         {
@@ -117,6 +117,7 @@ public class TravelersBackpackConfig
             public final ForgeConfigSpec.BooleanValue craftingSavesItems;
             public final ForgeConfigSpec.BooleanValue enableBackpackBlockWearable;
             public final ForgeConfigSpec.BooleanValue enableBackpackRightClickUnequip;
+            public final ForgeConfigSpec.BooleanValue allowOnlyEquippedBackpack;
             public final ForgeConfigSpec.BooleanValue invulnerableBackpack;
             public final ForgeConfigSpec.BooleanValue toolSlotsAcceptSwords;
             public final ForgeConfigSpec.BooleanValue toolSlotsAcceptEverything;
@@ -161,6 +162,10 @@ public class TravelersBackpackConfig
                 enableBackpackRightClickUnequip = builder
                         .comment("Enables unequipping the backpack on right-click on the ground with empty hand")
                         .define("enableBackpackRightClickUnequip", false);
+
+                allowOnlyEquippedBackpack = builder
+                        .comment("Allows to use only equipped backpack")
+                        .define("allowOnlyEquippedBackpack", false);
 
                 invulnerableBackpack = builder
                         .comment("Backpack immune to any damage source (lava, fire), can't be destroyed, never disappears as floating item")
