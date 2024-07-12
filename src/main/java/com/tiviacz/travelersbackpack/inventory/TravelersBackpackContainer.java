@@ -223,7 +223,7 @@ public class TravelersBackpackContainer implements ITravelersBackpackContainer, 
         {
             //Stop updating stack if player is changing settings
             if(this.slotManager.isSelectorActive(SlotManager.MEMORY) || this.slotManager.isSelectorActive(SlotManager.UNSORTABLE)) return;
-            
+
             CapabilityUtils.synchronise(player);
             CapabilityUtils.synchroniseToOthers(player);
         }
