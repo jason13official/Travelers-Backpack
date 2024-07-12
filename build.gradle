@@ -187,7 +187,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}")
 
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 
     //implementation fg.deobf("com.simibubi.create:create-1.18.2:0.5.0.d-168b:all") { transitive = false }
@@ -212,7 +212,7 @@ dependencies {
 
     //runtimeOnly fg.deobf("curse.maven:corpse-316582:3694258")
     //runtimeOnly fg.deobf("curse.maven:gravestone-238551:3713957")
-    runtimeOnly fg.deobf("curse.maven:enigmatic-graves-496030:4591064")
+    //runtimeOnly fg.deobf("curse.maven:enigmatic-graves-496030:4591064")
 
     //runtimeOnly fg.deobf("curse.maven:scaling-health-248027:3580899")
     //runtimeOnly fg.deobf("curse.maven:silent-lib-242998:3661417")
