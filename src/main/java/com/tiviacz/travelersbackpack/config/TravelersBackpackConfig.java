@@ -157,18 +157,19 @@ public class TravelersBackpackConfig
                         .define("enableCraftingUpgrade", true);
 
                 craftingUpgradeByDefault = builder
-                        .comment("New backpacks will have crafting grid by default")
+                        .comment("Newly crafted backpacks will have crafting upgrade included by default")
                         .define("craftingUpgradeByDefault", false);
 
                 craftingSavesItems = builder
+                        .comment("Whether crafting grid should save items")
                         .define("craftingSavesItems", true);
 
                 enableBackpackBlockWearable = builder
-                        .comment("Enables wearing backpack directly from ground")
+                        .comment("Enables equipping the backpack on right-click from the ground")
                         .define("enableBackpackBlockWearable", true);
 
                 enableBackpackRightClickUnequip = builder
-                        .comment("Enables unequipping the backpack when player clicks with empty hand on the ground")
+                        .comment("Enables unequipping the backpack on right-click on the ground with empty hand")
                         .define("enableBackpackRightClickUnequip", false);
 
                 invulnerableBackpack = builder
@@ -179,7 +180,7 @@ public class TravelersBackpackConfig
                         .define("toolSlotsAcceptSwords", true);
 
                 toolSlotsAcceptableItems = builder
-                        .comment("List of items that can be put in tool slots (Use registry names, for example: minecraft:apple, minecraft:flint)")
+                        .comment("List of items that can be put in tool slots (Use registry names, for example: \"minecraft:apple\", \"minecraft:flint\")")
                         .defineList("toolSlotsAcceptableItems", Collections.emptyList(), mapping -> ((String)mapping).matches(REGISTRY_NAME_MATCHER));
 
                 toolSlotsAcceptEverything = builder
@@ -187,14 +188,15 @@ public class TravelersBackpackConfig
                         .define("toolSlotsAcceptEverything", false);
 
                 blacklistedItems = builder
-                        .comment("List of items that can't be put in backpack inventory (Use registry names, for example: minecraft:apple, minecraft:flint)")
+                        .comment("List of items that can't be put in backpack inventory (Use registry names, for example: \"minecraft:apple\", \"minecraft:flint\")")
                         .defineList("blacklistedItems", Collections.emptyList(), mapping -> ((String)mapping).matches(REGISTRY_NAME_MATCHER));
 
                 allowShulkerBoxes = builder
+                        .comment("Allows putting shulker boxes and other items with inventory in backpack")
                         .define("allowShulkerBoxes", false);
 
                 voidProtection = builder
-                        .comment("Prevents backpack disappearing in void")
+                        .comment("Prevents backpack disappearing in void, spawns floating backpack above minimum Y when player dies in void")
                         .define("voidProtection", true);
 
                 backpackDeathPlace = builder
@@ -377,6 +379,7 @@ public class TravelersBackpackConfig
                         .define("enableBackpackAbilities", true);
 
                 forceAbilityEnabled = builder
+                        .comment("Newly crafted backpacks will have ability enabled by default")
                         .define("forceAbilityEnabled", false);
 
                 allowedAbilities = builder
