@@ -205,6 +205,9 @@ dependencies {
     compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
 
+    //Comforts
+    compileOnly fg.deobf("maven.modrinth:comforts:DFNEJtPk")
+
     //runtimeOnly fg.deobf("maven.modrinth:create:kvDi1uyh");
 
     //runtimeOnly fg.deobf("curse.maven:corpse-316582:3694258")

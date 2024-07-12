@@ -42,6 +42,8 @@ public class TravelersBackpack
     public static boolean gravestoneLoaded;
     public static boolean enigmaticGravesLoaded;
 
+    public static boolean comfortsLoaded;
+
     public TravelersBackpack()
     {
         ForgeMod.enableMilkFluid();
@@ -71,6 +73,8 @@ public class TravelersBackpack
         corpseLoaded = ModList.get().isLoaded("corpse");
         gravestoneLoaded = ModList.get().isLoaded("gravestone");
         enigmaticGravesLoaded = ModList.get().isLoaded("enigmaticgraves");
+
+        comfortsLoaded = ModList.get().isLoaded("comforts");
 
     }
 

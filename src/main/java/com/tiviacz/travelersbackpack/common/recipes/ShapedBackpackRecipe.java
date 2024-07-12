@@ -1,9 +1,11 @@
 package com.tiviacz.travelersbackpack.common.recipes;
 
 import com.google.gson.JsonObject;
+import com.tiviacz.travelersbackpack.TravelersBackpack;
 import com.tiviacz.travelersbackpack.blocks.SleepingBagBlock;
+import com.tiviacz.travelersbackpack.compat.comforts.ComfortsCompat;
+import com.tiviacz.travelersbackpack.init.ModTags;
 import com.tiviacz.travelersbackpack.inventory.ITravelersBackpackContainer;
-import com.tiviacz.travelersbackpack.items.SleepingBagItem;
 import com.tiviacz.travelersbackpack.items.TravelersBackpackItem;
 import com.tiviacz.travelersbackpack.util.RecipeUtils;
 import net.minecraft.core.NonNullList;
@@ -12,7 +14,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -48,23 +52,36 @@ public class ShapedBackpackRecipe extends ShapedRecipe
                     break;
                 }
 
-                if(!ingredient.isEmpty() && ingredient.getItem() instanceof SleepingBagItem)
+                if(!ingredient.isEmpty() && ingredient.is(ModTags.SLEEPING_BAGS))
                 {
-                    output.getOrCreateTag().putInt(ITravelersBackpackContainer.SLEEPING_BAG_COLOR, getProperColor((SleepingBagItem)ingredient.getItem()));
+                    output.getOrCreateTag().putInt(ITravelersBackpackContainer.SLEEPING_BAG_COLOR, getProperColor(ingredient.getItem()));
                 }
             }
         }
         return output;
     }
 
-    public static int getProperColor(SleepingBagItem item)
+    public static int getProperColor(Item item)
+    {
+        if(item instanceof BlockItem blockItem && blockItem.getBlock() instanceof SleepingBagBlock sleepingBagBlock)
+        {
+            return sleepingBagBlock.getColor().getId();
+        }
+        if(TravelersBackpack.comfortsLoaded)
+        {
+            return ComfortsCompat.getComfortsSleepingBagColor(item);
+        }
+        return DyeColor.RED.getId();
+    }
+
+   /* public static int getProperColor(SleepingBagItem item)
     {
         if(item.getBlock() instanceof SleepingBagBlock sleepingBag)
         {
             return sleepingBag.getColor().getId();
         }
         return DyeColor.RED.getId();
-    }
+    } */
 
     @Override
     public RecipeType<?> getType()
