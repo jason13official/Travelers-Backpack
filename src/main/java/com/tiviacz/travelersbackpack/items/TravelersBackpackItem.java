@@ -74,7 +74,7 @@ public class TravelersBackpackItem extends BlockItem
         {
             return InteractionResultHolder.fail(itemstack);
         }
-        
+
         if(!TravelersBackpackConfig.COMMON.backpackSettings.allowOnlyEquippedBackpack.get())
         {
             if(!level.isClientSide)

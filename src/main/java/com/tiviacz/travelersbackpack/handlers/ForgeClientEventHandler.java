@@ -21,7 +21,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = TravelersBackpack.MODID, value = Dist.CLIENT)
-public class ClientEventHandler
+public class ForgeClientEventHandler
 {
     @SubscribeEvent
     public static void clientTickEvent(final TickEvent.ClientTickEvent event)
