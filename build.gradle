@@ -187,7 +187,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${jei_mcversion}:${jei_version}")
 
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 
     //implementation fg.deobf("com.simibubi.create:create-1.18.2:0.5.0.d-168b:all") { transitive = false }
