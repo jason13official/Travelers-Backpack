@@ -80,6 +80,12 @@ public class ModNetwork
                 .consumer(ServerboundSettingsPacket::handle)
                 .add();
 
+        channel.messageBuilder(ClientboundSendMessagePacket.class, 10)
+                .decoder(ClientboundSendMessagePacket::decode)
+                .encoder(ClientboundSendMessagePacket::encode)
+                .consumer(ClientboundSendMessagePacket::handle)
+                .add();
+
         return channel;
     }
 }

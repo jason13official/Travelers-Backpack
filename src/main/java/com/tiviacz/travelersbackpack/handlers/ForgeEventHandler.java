@@ -27,11 +27,9 @@ import com.tiviacz.travelersbackpack.inventory.Tiers;
 import com.tiviacz.travelersbackpack.inventory.TravelersBackpackContainer;
 import com.tiviacz.travelersbackpack.items.TravelersBackpackItem;
 import com.tiviacz.travelersbackpack.items.UpgradeItem;
+import com.tiviacz.travelersbackpack.network.ClientboundSendMessagePacket;
 import com.tiviacz.travelersbackpack.network.ClientboundSyncCapabilityPacket;
-import com.tiviacz.travelersbackpack.util.BackpackUtils;
-import com.tiviacz.travelersbackpack.util.Reference;
-import com.tiviacz.travelersbackpack.util.ResourceUtils;
-import com.tiviacz.travelersbackpack.util.TimeUtils;
+import com.tiviacz.travelersbackpack.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -39,6 +37,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -65,6 +64,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootTableReference;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -72,6 +72,7 @@ import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityLeaveWorldEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.EnderManAngerEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
@@ -145,10 +146,6 @@ public class ForgeEventHandler
                             if(TravelersBackpack.enableCurios())
                             {
                                 TravelersBackpackCurios.rightClickUnequip(player, backpackStack);
-                              /*  int backpackSlot = CuriosApi.getCuriosHelper().findFirstCurio(player, p -> ItemStack.isSameItemSameTags(p, backpackStack)).get().slotContext().index();
-
-                                CuriosApi.getCuriosHelper().getCuriosHandler(player).map(iCuriosItemHandler -> iCuriosItemHandler.getStacksHandler(SlotTypePreset.BACK.getIdentifier()))
-                                        .ifPresent(iCurioStacksHandler -> iCurioStacksHandler.get().getStacks().setStackInSlot(backpackSlot, ItemStack.EMPTY)); */
                             }
 
                             CapabilityUtils.synchronise(player);
@@ -428,6 +425,11 @@ public class ForgeEventHandler
     @SubscribeEvent
     public static void onEntityJoinWorld(EntityJoinWorldEvent event)
     {
+        if(event.getEntity() instanceof Player player)
+        {
+            CapabilityUtils.synchronise(player);
+        }
+
         if(event.getEntity() instanceof LivingEntity living && !event.loadedFromDisk() && TravelersBackpackConfig.spawnEntitiesWithBackpack)
         {
             LazyOptional<IEntityTravelersBackpack> cap = CapabilityUtils.getEntityCapability(living);
@@ -462,6 +464,46 @@ public class ForgeEventHandler
     }
 
     @SubscribeEvent
+    public static void entityLeave(EntityLeaveWorldEvent event)
+    {
+        if(!(event.getEntity() instanceof ItemEntity itemEntity) || !TravelersBackpackConfig.voidProtection) return;
+
+        //Void protection
+        if(itemEntity.getItem().getItem() instanceof TravelersBackpackItem)
+        {
+            if(event.getWorld().isClientSide) return;
+
+            BlockPos entityPos = itemEntity.blockPosition();
+            Vec3 entityPosCentered = Vec3.atCenterOf(entityPos);
+            double y = entityPosCentered.y();
+
+            if(y < event.getWorld().getMinBuildHeight())
+            {
+                ItemEntity protectedItemEntity = new ItemEntity(event.getWorld(), entityPosCentered.x(), y, entityPosCentered.z(), itemEntity.getItem());
+
+                protectedItemEntity.setNoGravity(true);
+                protectedItemEntity.setDefaultPickUpDelay();
+
+                y = event.getWorld().getMinBuildHeight();
+
+                for(double i = y; i < event.getWorld().getHeight(); i++)
+                {
+                    if(event.getWorld().getBlockState(new BlockPos(Mth.floor(entityPosCentered.x()), Mth.floor(i), Mth.floor(entityPosCentered.z()))).getMaterial().isReplaceable())
+                    {
+                        y = i;
+                        break;
+                    }
+                }
+
+                protectedItemEntity.setPos(entityPosCentered.x(), y, entityPosCentered.z());
+                protectedItemEntity.setDeltaMovement(0, 0, 0);
+
+                event.getWorld().addFreshEntity(protectedItemEntity);
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void attachCapabilities(final AttachCapabilitiesEvent<Entity> event)
     {
         if(event.getObject() instanceof Player player)
@@ -491,14 +533,6 @@ public class ForgeEventHandler
                 {
                     return;
                 }
-
-                if(TravelersBackpack.isAnyGraveModInstalled()) return;
-
-                if(!player.level.getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY))
-                {
-                    BackpackUtils.onPlayerDeath(player.level, player, CapabilityUtils.getWearingBackpack(player));
-                }
-                CapabilityUtils.synchronise((Player)event.getEntity());
             }
         }
     }
@@ -506,17 +540,30 @@ public class ForgeEventHandler
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onPlayerDrops(LivingDropsEvent event)
     {
-        if(TravelersBackpack.isAnyGraveModInstalled())
+        if(event.getEntity() instanceof Player player)
         {
-            if(event.getEntity() instanceof Player player)
+            if(CapabilityUtils.isWearingBackpack(player))
             {
+                //Keep backpack on with Keep Inventory game rule
                 if(player.level.getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY)) return;
 
-                if(CapabilityUtils.isWearingBackpack(player) && !player.level.isClientSide)
+                ItemStack stack = CapabilityUtils.getWearingBackpack(player);
+
+                if(BackpackUtils.onPlayerDrops(player.level, player, stack))
                 {
-                    ItemStack stack = CapabilityUtils.getWearingBackpack(player);
-                    ItemEntity itemEntity = new ItemEntity(player.getLevel(), player.getX(), player.getY(), player.getZ(), stack);
-                    event.getDrops().add(itemEntity);
+                    if(player.level.isClientSide) return;
+
+                    ItemEntity itemEntity = new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), stack);
+                    itemEntity.setDefaultPickUpDelay();
+
+                    TravelersBackpack.NETWORK.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)player), new ClientboundSendMessagePacket(true, player.blockPosition()));
+                    LogHelper.info("There's no space for backpack. Dropping backpack item at" + " X: " + player.blockPosition().getX() + " Y: " + player.getY() + " Z: " + player.blockPosition().getZ());
+
+                    //If Curios loaded - handled by Curios
+                    if(!TravelersBackpack.enableCurios())
+                    {
+                        event.getDrops().add(itemEntity);
+                    }
 
                     CapabilityUtils.getCapability(player).ifPresent(ITravelersBackpack::removeWearable);
                     CapabilityUtils.synchronise(player);
@@ -559,15 +606,6 @@ public class ForgeEventHandler
     public static void playerJoin(final PlayerEvent.PlayerLoggedInEvent event)
     {
         CapabilityUtils.synchronise(event.getPlayer());
-    }
-
-    @SubscribeEvent
-    public static void entityJoin(EntityJoinWorldEvent event)
-    {
-        if(event.getEntity() instanceof Player player)
-        {
-            CapabilityUtils.synchronise(player);
-        }
     }
 
     @SubscribeEvent
