@@ -177,6 +177,13 @@ public class TravelersBackpackItem extends BlockItem
         }
         else
         {
+            //Create blank container and save to stack to initialize proper data if different tier than leather
+            if(stack.getTag() != null && (stack.getTag().getAllKeys().size() == 1 && stack.getTag().contains(ITravelersBackpackContainer.TIER)))
+            {
+                TravelersBackpackContainer blank = new TravelersBackpackContainer(stack, null, Reference.ITEM_SCREEN_ID);
+                blank.saveAllData(stack.getOrCreateTag());
+            }
+
             CompoundTag compoundtag = stack.getTag();
             if(compoundtag != null)
             {
