@@ -117,6 +117,7 @@ public class TravelersBackpackConfig
             public final ForgeConfigSpec.BooleanValue craftingSavesItems;
             public final ForgeConfigSpec.BooleanValue enableBackpackBlockWearable;
             public final ForgeConfigSpec.BooleanValue enableBackpackRightClickUnequip;
+            public final ForgeConfigSpec.BooleanValue allowOnlyEquippedBackpack;
             public final ForgeConfigSpec.BooleanValue invulnerableBackpack;
             public final ForgeConfigSpec.BooleanValue toolSlotsAcceptSwords;
             public final ForgeConfigSpec.BooleanValue toolSlotsAcceptEverything;
@@ -162,6 +163,10 @@ public class TravelersBackpackConfig
                 enableBackpackRightClickUnequip = builder
                         .comment("Enables unequipping the backpack on right-click on the ground with empty hand")
                         .define("enableBackpackRightClickUnequip", false);
+
+                allowOnlyEquippedBackpack = builder
+                        .comment("Allows to use only equipped backpack")
+                        .define("allowOnlyEquippedBackpack", false);
 
                 invulnerableBackpack = builder
                         .comment("Backpack immune to any damage source (lava, fire), can't be destroyed, never disappears as floating item")
