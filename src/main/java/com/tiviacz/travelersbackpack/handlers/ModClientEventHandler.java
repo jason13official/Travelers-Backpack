@@ -11,7 +11,6 @@ import com.tiviacz.travelersbackpack.config.TravelersBackpackConfig;
 import com.tiviacz.travelersbackpack.init.ModBlockEntityTypes;
 import com.tiviacz.travelersbackpack.init.ModItems;
 import com.tiviacz.travelersbackpack.init.ModMenuTypes;
-import com.tiviacz.travelersbackpack.util.Reference;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -28,9 +27,12 @@ import org.lwjgl.glfw.GLFW;
 
 public class ModClientEventHandler
 {
-    public static final KeyMapping OPEN_INVENTORY = new KeyMapping(Reference.INVENTORY, GLFW.GLFW_KEY_B, Reference.CATEGORY);
-    public static final KeyMapping TOGGLE_TANK = new KeyMapping(Reference.TOGGLE_TANK, GLFW.GLFW_KEY_N, Reference.CATEGORY);
-    public static final KeyMapping CYCLE_TOOL = new KeyMapping(Reference.CYCLE_TOOL, GLFW.GLFW_KEY_Z, Reference.CATEGORY);
+    public static final String CATEGORY = "key.travelersbackpack.category";
+    public static final KeyMapping OPEN_BACKPACK = new KeyMapping("key.travelersbackpack.inventory", GLFW.GLFW_KEY_B, CATEGORY);
+    public static final KeyMapping SORT_BACKPACK = new KeyMapping("key.travelersbackpack.sort", GLFW.GLFW_KEY_UNKNOWN, CATEGORY);
+    public static final KeyMapping ABILITY = new KeyMapping("key.travelersbackpack.ability", GLFW.GLFW_KEY_UNKNOWN, CATEGORY);
+    public static final KeyMapping SWAP_TOOL = new KeyMapping("key.travelersbackpack.cycle_tool", GLFW.GLFW_KEY_Z, CATEGORY);
+    public static final KeyMapping TOGGLE_TANK = new KeyMapping("key.travelersbackpack.toggle_tank", GLFW.GLFW_KEY_N, CATEGORY);
 
     public static void registerScreenFactory()
     {
@@ -50,9 +52,11 @@ public class ModClientEventHandler
 
     public static void registerKeybinding()
     {
-        ClientRegistry.registerKeyBinding(OPEN_INVENTORY);
+        ClientRegistry.registerKeyBinding(OPEN_BACKPACK);
+        ClientRegistry.registerKeyBinding(SORT_BACKPACK);
+        ClientRegistry.registerKeyBinding(ABILITY);
+        ClientRegistry.registerKeyBinding(SWAP_TOOL);
         ClientRegistry.registerKeyBinding(TOGGLE_TANK);
-        ClientRegistry.registerKeyBinding(CYCLE_TOOL);
     }
 
     public static void registerOverlay()
