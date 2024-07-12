@@ -47,22 +47,19 @@ public class TravelersBackpackLayer extends RenderLayer<AbstractClientPlayer, Pl
 
             if(inv != null && !clientPlayer.isInvisible())
             {
-                if(inv != null && !clientPlayer.isInvisible())
+                boolean curiosIntegration = TravelersBackpack.enableCurios();
+
+                if(curiosIntegration)
                 {
-                    boolean curiosIntegration = TravelersBackpack.enableCurios();
-
-                    if(curiosIntegration)
+                    if(!TravelersBackpackCurios.renderCurioLayer(clientPlayer))
                     {
-                        if(!TravelersBackpackCurios.renderCurioLayer(clientPlayer))
-                        {
-                            return;
-                        }
+                        return;
                     }
-
-                    if(!curiosIntegration && !TravelersBackpackConfig.CLIENT.renderBackpackWithElytra.get() && clientPlayer.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem) return;
-
-                    renderLayer(poseStack, bufferIn, packedLightIn, clientPlayer, inv, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
                 }
+
+                if(!curiosIntegration && !TravelersBackpackConfig.CLIENT.renderBackpackWithElytra.get() && clientPlayer.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem) return;
+
+                renderLayer(poseStack, bufferIn, packedLightIn, clientPlayer, inv, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
 
                 /*if(TravelersBackpack.enableCurios())
                 {
