@@ -49,7 +49,6 @@ public class TravelersBackpackHandledScreen extends HandledScreen<TravelersBackp
     public MemoryWidget memoryWidget;
     public TankSlotWidget leftTankSlotWidget;
     public TankSlotWidget rightTankSlotWidget;
-    public CraftingWidget craftingWidget;
 
     public final ITravelersBackpackInventory inventory;
     private final TankScreen tankLeft;
@@ -97,7 +96,6 @@ public class TravelersBackpackHandledScreen extends HandledScreen<TravelersBackp
         initToolSlotsWidget();
         initSettingsTab();
         initTankSlotWidgets();
-        initCraftingWidget();
         initButtons();
     }
 
@@ -133,12 +131,6 @@ public class TravelersBackpackHandledScreen extends HandledScreen<TravelersBackp
         addSelectableChild(sortWidget);
         this.memoryWidget = new MemoryWidget(this, x + backgroundWidth, y + 48, 15, 18);
         addSelectableChild(memoryWidget);
-    }
-
-    public void initCraftingWidget()
-    {
-        this.craftingWidget = new CraftingWidget(this, x + backgroundWidth, y + 29, 15, 18);
-        addSelectableChild(craftingWidget);
     }
 
     public void initButtons()
@@ -294,9 +286,6 @@ public class TravelersBackpackHandledScreen extends HandledScreen<TravelersBackp
     {
         this.renderBackground(context);
 
-        //Crafting widget so it renders under screen
-        this.craftingWidget.render(context, mouseX, mouseY, delta);
-
         super.render(context, mouseX, mouseY, delta);
 
         //Fluid Bars
@@ -344,8 +333,6 @@ public class TravelersBackpackHandledScreen extends HandledScreen<TravelersBackp
         }
 
         this.buttons.forEach(button -> button.drawMouseoverTooltip(context, x, y));
-
-        this.craftingWidget.drawMouseoverTooltip(context, x, y);
     }
 
     public boolean isWidgetVisible(int rowsCount, TankSlotWidget widget)

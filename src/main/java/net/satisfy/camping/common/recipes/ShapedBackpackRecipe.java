@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.satisfy.camping.TravelersBackpack;
 import net.satisfy.camping.blocks.SleepingBagBlock;
-import net.satisfy.camping.compat.comforts.ComfortsCompat;
 import net.satisfy.camping.init.ModRecipeSerializers;
 import net.satisfy.camping.init.ModTags;
 import net.satisfy.camping.inventory.ITravelersBackpackInventory;
@@ -72,10 +71,6 @@ public class ShapedBackpackRecipe extends ShapedRecipe
         if(item instanceof BlockItem blockItem && blockItem.getBlock() instanceof SleepingBagBlock)
         {
             return ((SleepingBagBlock)blockItem.getBlock()).getColor().getId();
-        }
-        if(TravelersBackpack.comfortsLoaded)
-        {
-            return ComfortsCompat.getComfortsSleepingBagColor(item);
         }
         return DyeColor.RED.getId();
     }

@@ -3,7 +3,6 @@ package net.satisfy.camping.client.renderer;
 import net.satisfy.camping.TravelersBackpack;
 import net.satisfy.camping.client.model.TravelersBackpackWearableModel;
 import net.satisfy.camping.common.recipes.BackpackDyeRecipe;
-import net.satisfy.camping.compat.trinkets.TrinketsCompat;
 import net.satisfy.camping.component.ComponentUtils;
 import net.satisfy.camping.config.TravelersBackpackConfig;
 import net.satisfy.camping.init.ModItems;
@@ -47,15 +46,7 @@ public class TravelersBackpackFeature extends FeatureRenderer<AbstractClientPlay
 
             if(inv != null && !entity.isInvisible())
             {
-                boolean trinketsIntegration = TravelersBackpack.enableTrinkets();
-
-                if(trinketsIntegration)
-                {
-                    if(!TrinketsCompat.renderTrinketsLayer(entity))
-                    {
-                        return;
-                    }
-                }
+                boolean trinketsIntegration = false;
 
                 if(!trinketsIntegration && !TravelersBackpackConfig.getConfig().client.renderBackpackWithElytra && entity.getEquippedStack(EquipmentSlot.CHEST).getItem() instanceof ElytraItem) return;
 

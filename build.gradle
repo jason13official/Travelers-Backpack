@@ -106,53 +106,6 @@ dependencies {
 
 	//Reach Entity Attributes
 	include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}")
-
-	//OPTIONAL
-
-	//Crafting Tweaks
-	modImplementation "curse.maven:balm-fabric-500525:5140906"
-	modImplementation "curse.maven:crafting-tweaks-fabric-502516:5140222"
-
-	//ModMenu
-	modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
-
-	//Trinkets
-	modCompileOnly("dev.emi:trinkets:${trinkets_version}")
-
-	//REI
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-
-	//JEI
-	modCompileOnly ("maven.modrinth:jei:NsbSea5x")
-
-	//Comforts
-	modCompileOnly ("maven.modrinth:comforts:D2F8i5te")
-
-	//EMI
-	modCompileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
-
-	//Dehydration
-	modCompileOnly "curse.maven:dehydration-410830:4869849"
-
-	//Universal Graves
-	modCompileOnly "curse.maven:universal-graves-497175:4610073"
-
-	//Carry On
-	modRuntimeOnly "curse.maven:carryon-274259:4882498"
-
-	//Yigd
-	modRuntimeOnly("maven.modrinth:yigd:VslzbAWg")
-	modRuntimeOnly("io.github.cottonmc:LibGui:8.1.1+1.20.1")
-	modRuntimeOnly("me.lucko:fabric-permissions-api:0.2-SNAPSHOT")
-
-	//modRuntimeOnly("eu.pb4:sgui:1.2.2+1.20")
-	//modRuntimeOnly("eu.pb4:placeholder-api:2.1.1+1.20")
-	//modRuntimeOnly('xyz.nucleoid:server-translations-api:2.0.0+1.20')
-	//modRuntimeOnly('eu.pb4:polymer-core:0.5.3+1.20.1')
-	//modRuntimeOnly('eu.pb4:polymer-resource-pack:0.5.3+1.20.1')
-	//modRuntimeOnly('eu.pb4:polymer-virtual-entity:0.5.3+1.20.1')
-	//modRuntimeOnly('eu.pb4:predicate-api:0.1.2+1.20')
-	//modRuntimeOnly("eu.pb4:common-protection-api:1.0.0")
 }
 
 processResources {

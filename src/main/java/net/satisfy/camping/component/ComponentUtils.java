@@ -1,12 +1,10 @@
 package net.satisfy.camping.component;
 
 import net.satisfy.camping.TravelersBackpack;
-import net.satisfy.camping.compat.trinkets.TrinketsCompat;
 import net.satisfy.camping.component.entity.EntityTravelersBackpackComponent;
 import net.satisfy.camping.component.entity.IEntityTravelersBackpackComponent;
 import net.satisfy.camping.inventory.TravelersBackpackInventory;
 import net.satisfy.camping.items.TravelersBackpackItem;
-import dev.emi.trinkets.api.TrinketsApi;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
@@ -47,10 +45,6 @@ public class ComponentUtils implements EntityComponentInitializer
 
     public static boolean isWearingBackpack(PlayerEntity player)
     {
-        if(TravelersBackpack.enableTrinkets())
-        {
-            return TrinketsApi.getTrinketComponent(player).map(t -> t.isEquipped(item -> item.getItem() instanceof TravelersBackpackItem)).orElse(false);
-        }
 
         return player.getComponent(WEARABLE).hasWearable() && player.getComponent(WEARABLE).getWearable().getItem() instanceof TravelersBackpackItem;
     }
@@ -62,10 +56,6 @@ public class ComponentUtils implements EntityComponentInitializer
 
     public static ItemStack getWearingBackpack(PlayerEntity player)
     {
-        if(TravelersBackpack.enableTrinkets())
-        {
-            return TrinketsCompat.getTravelersBackpackTrinket(player);
-        }
 
         return isWearingBackpack(player) ? player.getComponent(WEARABLE).getWearable() : ItemStack.EMPTY;
     }
@@ -93,11 +83,6 @@ public class ComponentUtils implements EntityComponentInitializer
     public static TravelersBackpackInventory getBackpackInv(PlayerEntity player)
     {
         ItemStack wearable = getWearingBackpack(player);
-
-        if(TravelersBackpack.enableTrinkets())
-        {
-            return TrinketsCompat.getTrinketsTravelersBackpackInventory(player);
-        }
 
         if(wearable.getItem() instanceof TravelersBackpackItem)
         {

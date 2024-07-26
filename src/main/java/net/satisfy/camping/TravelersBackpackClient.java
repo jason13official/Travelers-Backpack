@@ -8,7 +8,6 @@ import net.satisfy.camping.client.screen.HudOverlay;
 import net.satisfy.camping.client.screen.TravelersBackpackHandledScreen;
 import net.satisfy.camping.client.screen.tooltip.BackpackTooltipComponent;
 import net.satisfy.camping.client.screen.tooltip.BackpackTooltipData;
-import net.satisfy.camping.compat.craftingtweaks.TravelersBackpackCraftingGridProvider;
 import net.satisfy.camping.fluids.milk.MilkFluidVariantAttributeHandler;
 import net.satisfy.camping.fluids.potion.PotionFluidVariantAttributeHandler;
 import net.satisfy.camping.fluids.potion.PotionFluidVariantRenderHandler;
@@ -76,9 +75,6 @@ public class TravelersBackpackClient implements ClientModInitializer
 
         //Fluid Rendering
         setupFluidRendering();
-
-        //Crafting Tweaks Integration
-        if(TravelersBackpack.craftingTweaksLoaded) TravelersBackpackCraftingGridProvider.registerClient();
     }
 
     public static void registerFeatureRenderers()

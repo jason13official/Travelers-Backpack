@@ -4,7 +4,6 @@ import net.satisfy.camping.TravelersBackpack;
 import net.satisfy.camping.blockentity.TravelersBackpackBlockEntity;
 import net.satisfy.camping.blocks.TravelersBackpackBlock;
 import net.satisfy.camping.common.recipes.ShapedBackpackRecipe;
-import net.satisfy.camping.compat.trinkets.TrinketsCompat;
 import net.satisfy.camping.component.ComponentUtils;
 import net.satisfy.camping.config.TravelersBackpackConfig;
 import net.satisfy.camping.init.ModItems;
@@ -46,11 +45,6 @@ public class RightClickHandler
                             {
                                 player.swingHand(Hand.MAIN_HAND, true);
                                 world.playSound(null, player.getBlockPos(), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, SoundCategory.PLAYERS, 1.05F, (1.0F + (world.getRandom().nextFloat() - world.getRandom().nextFloat()) * 0.2F) * 0.7F);
-
-                                if(TravelersBackpack.enableTrinkets())
-                                {
-                                    TrinketsCompat.rightClickUnequip(player, backpackStack);
-                                }
 
                                 ComponentUtils.getComponent(player).removeWearable();
 
@@ -159,14 +153,7 @@ public class RightClickHandler
                         {
                             blockEntity.transferToItemStack(stack);
 
-                            if(TravelersBackpack.enableTrinkets())
-                            {
-                                TrinketsCompat.rightClickEquip(player, stack);
-                            }
-                            else
-                            {
-                                ComponentUtils.equipBackpack(player, stack);
-                            }
+                            ComponentUtils.equipBackpack(player, stack);
 
                             if(blockEntity.isSleepingBagDeployed())
                             {

@@ -1,10 +1,5 @@
 package net.satisfy.camping;
 
-import net.satisfy.camping.compat.craftingtweaks.TravelersBackpackCraftingGridProvider;
-import net.satisfy.camping.compat.effects.dehydration.DehydrationMilkEffect;
-import net.satisfy.camping.compat.effects.dehydration.PurifiedWaterEffect;
-import net.satisfy.camping.compat.trinkets.TrinketsCompat;
-import net.satisfy.camping.compat.universalgraves.UniversalGravesCompat;
 import net.satisfy.camping.config.TravelersBackpackConfig;
 import net.satisfy.camping.fluids.EffectFluidRegistry;
 import net.satisfy.camping.handlers.*;
@@ -55,23 +50,12 @@ public class TravelersBackpack implements ModInitializer
 		trinketsLoaded = FabricLoader.getInstance().isModLoaded("trinkets");
 		craftingTweaksLoaded = FabricLoader.getInstance().isModLoaded("craftingtweaks");
 
-		if(craftingTweaksLoaded) new TravelersBackpackCraftingGridProvider();
-
-		if(trinketsLoaded) TrinketsCompat.init();
-
 		dehydrationloaded = FabricLoader.getInstance().isModLoaded("dehydration");
 		comfortsLoaded = FabricLoader.getInstance().isModLoaded("comforts");
 
 		universalGravesLoaded = FabricLoader.getInstance().isModLoaded("universal-graves");
-		if(universalGravesLoaded && !enableTrinkets()) UniversalGravesCompat.register();
 
 		EffectFluidRegistry.initEffects();
-
-		if(dehydrationloaded)
-		{
-			new PurifiedWaterEffect();
-			new DehydrationMilkEffect();
-		}
 	}
 
 	public static boolean enableTrinkets()

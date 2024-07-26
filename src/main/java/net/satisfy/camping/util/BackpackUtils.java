@@ -3,7 +3,6 @@ package net.satisfy.camping.util;
 import net.satisfy.camping.TravelersBackpack;
 import net.satisfy.camping.blockentity.TravelersBackpackBlockEntity;
 import net.satisfy.camping.common.BackpackManager;
-import net.satisfy.camping.compat.trinkets.TrinketsCompat;
 import net.satisfy.camping.component.ComponentUtils;
 import net.satisfy.camping.config.TravelersBackpackConfig;
 import net.satisfy.camping.init.ModNetwork;
@@ -138,12 +137,6 @@ public class BackpackUtils
         if(ComponentUtils.isWearingBackpack(player) && !world.isClient)
         {
             ComponentUtils.getComponent(player).removeWearable();
-        }
-
-        //Get rid of duplicated backpack if placed with Trinkets integration enabled
-        if(TravelersBackpack.enableTrinkets())
-        {
-            TrinketsCompat.rightClickUnequip(player, stack);
         }
     }
 
