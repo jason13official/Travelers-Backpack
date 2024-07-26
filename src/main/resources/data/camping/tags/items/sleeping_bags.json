@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "camping:white_sleeping_bag",
+    "camping:orange_sleeping_bag",
+    "camping:magenta_sleeping_bag",
+    "camping:light_blue_sleeping_bag",
+    "camping:yellow_sleeping_bag",
+    "camping:lime_sleeping_bag",
+    "camping:pink_sleeping_bag",
+    "camping:gray_sleeping_bag",
+    "camping:light_gray_sleeping_bag",
+    "camping:cyan_sleeping_bag",
+    "camping:purple_sleeping_bag",
+    "camping:blue_sleeping_bag",
+    "camping:brown_sleeping_bag",
+    "camping:green_sleeping_bag",
+    "camping:red_sleeping_bag",
+    "camping:black_sleeping_bag",
+    {
+      "id": "#comforts:sleeping_bags",
+      "required": false
+    }
+  ]
+}

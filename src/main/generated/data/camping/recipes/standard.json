@@ -1,0 +1,31 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "group": "standard_travelers_backpack",
+  "key": {
+    "B": {
+      "tag": "c:gold_ingots"
+    },
+    "C": {
+      "item": "camping:backpack_tank"
+    },
+    "D": {
+      "tag": "c:chests"
+    },
+    "S": {
+      "tag": "camping:sleeping_bags"
+    },
+    "X": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "XBX",
+    "CDC",
+    "XSX"
+  ],
+  "result": {
+    "item": "camping:standard"
+  },
+  "show_notification": true
+}

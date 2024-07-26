@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "camping:block/iron_golem" },
+    "facing=east": { "model": "camping:block/iron_golem","y":270 },
+    "facing=west": { "model": "camping:block/iron_golem","y":90 },
+    "facing=north": { "model": "camping:block/iron_golem","y":180 }
+  }
+}

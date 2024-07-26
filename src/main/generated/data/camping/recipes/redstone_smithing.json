@@ -1,0 +1,15 @@
+{
+  "type": "camping:backpack_upgrade",
+  "addition": {
+    "tag": "camping:backpack_upgrades"
+  },
+  "base": {
+    "item": "camping:redstone"
+  },
+  "result": {
+    "item": "camping:redstone"
+  },
+  "template": {
+    "item": "minecraft:leather"
+  }
+}

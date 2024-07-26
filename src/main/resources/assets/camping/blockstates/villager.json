@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "camping:block/villager" },
+    "facing=east": { "model": "camping:block/villager","y":270 },
+    "facing=west": { "model": "camping:block/villager","y":90 },
+    "facing=north": { "model": "camping:block/villager","y":180 }
+  }
+}

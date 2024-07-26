@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.satisfy.camping.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "net.satisfy.camping.TravelersBackpackMixinPlugin",
+  "mixins": [
+    "CauldronMixin",
+    "ExplosionMixin",
+    "LivingEntityMixin",
+    "MobEntityMixin",
+    "PlayerEntityMixin",
+    "ShulkerBoxBlockEntityMixin",
+    "WorldSavePathMixin",
+    "abilities.EndermanEntityMixin",
+    "abilities.ExperienceOrbEntityMixin",
+    "abilities.GhastEntityMixin",
+    "abilities.SmallFireballEntityMixin"
+  ],
+  "client": [
+    "MouseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sweet_berries"
+    },
+    "B": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "result": {
+    "item": "camping:fox"
+  },
+  "show_notification": true
+}

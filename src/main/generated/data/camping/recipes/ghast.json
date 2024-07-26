@@ -1,0 +1,27 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:ghast_tear"
+    },
+    "B": {
+      "item": "minecraft:fire_charge"
+    },
+    "C": {
+      "item": "minecraft:gunpowder"
+    },
+    "D": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "ACA"
+  ],
+  "result": {
+    "item": "camping:ghast"
+  },
+  "show_notification": true
+}

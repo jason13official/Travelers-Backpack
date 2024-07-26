@@ -1,0 +1,17 @@
+{
+  "type": "camping:backpack_shapeless",
+  "category": "misc",
+  "group": "standard_travelers_backpack",
+  "ingredients": [
+    {
+      "tag": "c:shears"
+    },
+    {
+      "tag": "camping:custom_travelers_backpack"
+    }
+  ],
+  "result": {
+    "item": "camping:standard"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,21 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:emeralds"
+    },
+    "B": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "result": {
+    "item": "camping:emerald"
+  },
+  "show_notification": true
+}

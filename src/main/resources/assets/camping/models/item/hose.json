@@ -1,0 +1,26 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "camping:item/hose_suck"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "camping:mode": 0.1
+      },
+      "model": "camping:item/hose_suck"
+    },
+    {
+      "predicate": {
+        "camping:mode": 0.2
+      },
+      "model": "camping:item/hose_spill"
+    },
+    {
+      "predicate": {
+        "camping:mode": 0.3
+      },
+      "model": "camping:item/hose_drink"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:diamonds"
+    },
+    "B": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "result": {
+    "item": "camping:diamond"
+  },
+  "show_notification": true
+}

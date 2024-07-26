@@ -1,0 +1,24 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "B": {
+      "item": "minecraft:soul_sand"
+    },
+    "C": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCB",
+    " B "
+  ],
+  "result": {
+    "item": "camping:wither"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,27 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:gunpowder"
+    },
+    "B": {
+      "item": "minecraft:creeper_head"
+    },
+    "C": {
+      "item": "camping:standard"
+    },
+    "D": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    "DDD"
+  ],
+  "result": {
+    "item": "camping:creeper"
+  },
+  "show_notification": true
+}

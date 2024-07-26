@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "sleeping_bag",
+  "ingredients": [
+    {
+      "item": "minecraft:pink_dye"
+    },
+    [
+      {
+        "item": "camping:black_sleeping_bag"
+      },
+      {
+        "item": "camping:blue_sleeping_bag"
+      },
+      {
+        "item": "camping:brown_sleeping_bag"
+      },
+      {
+        "item": "camping:cyan_sleeping_bag"
+      },
+      {
+        "item": "camping:gray_sleeping_bag"
+      },
+      {
+        "item": "camping:green_sleeping_bag"
+      },
+      {
+        "item": "camping:light_blue_sleeping_bag"
+      },
+      {
+        "item": "camping:light_gray_sleeping_bag"
+      },
+      {
+        "item": "camping:lime_sleeping_bag"
+      },
+      {
+        "item": "camping:magenta_sleeping_bag"
+      },
+      {
+        "item": "camping:orange_sleeping_bag"
+      },
+      {
+        "item": "camping:purple_sleeping_bag"
+      },
+      {
+        "item": "camping:red_sleeping_bag"
+      },
+      {
+        "item": "camping:yellow_sleeping_bag"
+      },
+      {
+        "item": "camping:white_sleeping_bag"
+      }
+    ]
+  ],
+  "result": {
+    "item": "camping:pink_sleeping_bag"
+  }
+}

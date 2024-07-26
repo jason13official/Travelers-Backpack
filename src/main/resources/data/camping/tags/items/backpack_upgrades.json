@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "camping:iron_tier_upgrade",
+    "camping:gold_tier_upgrade",
+    "camping:diamond_tier_upgrade",
+    "camping:netherite_tier_upgrade",
+    "camping:crafting_upgrade"
+  ]
+}

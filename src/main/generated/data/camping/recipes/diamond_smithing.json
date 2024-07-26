@@ -1,0 +1,15 @@
+{
+  "type": "camping:backpack_upgrade",
+  "addition": {
+    "tag": "camping:backpack_upgrades"
+  },
+  "base": {
+    "item": "camping:diamond"
+  },
+  "result": {
+    "item": "camping:diamond"
+  },
+  "template": {
+    "item": "minecraft:leather"
+  }
+}

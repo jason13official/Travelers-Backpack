@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "id": "travelersbackpack",
+  "id": "camping",
   "version": "${version}",
   "custom": {
     "cardinal-components": [
-      "travelersbackpack:travelersbackpack",
-      "travelersbackpack:travelersbackpack_entity"
+      "camping:camping",
+      "camping:camping_entity"
     ]
   },
-  "accessWidener" : "travelersbackpack.accesswidener",
+  "accessWidener" : "camping.accesswidener",
 
   "name": "Traveler's Backpack",
   "description": "Unique and upgradeable backpacks with customisation, Trinkets integration and more!",
@@ -22,45 +22,45 @@
   },
 
   "license": "GPL v3",
-  "icon": "assets/travelersbackpack/icon.png",
+  "icon": "assets/camping/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "emi": [
-      "com.tiviacz.travelersbackpack.compat.emi.EmiCompat"
+      "net.satisfy.camping.compat.emi.EmiCompat"
     ],
     "fabric-datagen": [
-      "com.tiviacz.travelersbackpack.datagen.ModDataGeneration"
+      "net.satisfy.camping.datagen.ModDataGeneration"
     ],
     "main": [
-      "com.tiviacz.travelersbackpack.TravelersBackpack"
+      "net.satisfy.camping.TravelersBackpack"
     ],
     "client": [
-      "com.tiviacz.travelersbackpack.TravelersBackpackClient"
+      "net.satisfy.camping.TravelersBackpackClient"
     ],
 
     "jei_mod_plugin": [
-      "com.tiviacz.travelersbackpack.compat.jei.TravelersBackpackPlugin"
+      "net.satisfy.camping.compat.jei.TravelersBackpackPlugin"
     ],
 
     "rei_common": [
-      "com.tiviacz.travelersbackpack.compat.rei.ReiCompat"
+      "net.satisfy.camping.compat.rei.ReiCompat"
     ],
 
     "rei_client": [
-      "com.tiviacz.travelersbackpack.compat.rei.ReiClientCompat"
+      "net.satisfy.camping.compat.rei.ReiClientCompat"
     ],
 
     "cardinal-components-entity": [
-      "com.tiviacz.travelersbackpack.component.ComponentUtils"
+      "net.satisfy.camping.component.ComponentUtils"
     ],
 
     "modmenu": [
-      "com.tiviacz.travelersbackpack.compat.modmenu.ModMenuIntegration"
+      "net.satisfy.camping.compat.modmenu.ModMenuIntegration"
     ]
   },
   "mixins": [
-    "travelersbackpack.mixins.json"
+    "camping.mixins.json"
   ],
 
   "depends": {

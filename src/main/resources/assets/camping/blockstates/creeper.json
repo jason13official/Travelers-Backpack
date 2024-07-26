@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "camping:block/creeper" },
+    "facing=east": { "model": "camping:block/creeper","y":270 },
+    "facing=west": { "model": "camping:block/creeper","y":90 },
+    "facing=north": { "model": "camping:block/creeper","y":180 }
+  }
+}

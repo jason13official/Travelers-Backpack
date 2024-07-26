@@ -1,0 +1,21 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:diamonds"
+    },
+    "B": {
+      "item": "camping:blank_upgrade"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "camping:diamond_tier_upgrade"
+  },
+  "show_notification": true
+}

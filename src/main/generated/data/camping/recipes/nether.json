@@ -1,0 +1,33 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:quartz"
+    },
+    "B": {
+      "item": "minecraft:nether_wart"
+    },
+    "C": {
+      "item": "minecraft:netherrack"
+    },
+    "D": {
+      "item": "camping:standard"
+    },
+    "E": {
+      "item": "minecraft:blackstone"
+    },
+    "F": {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EFE"
+  ],
+  "result": {
+    "item": "camping:nether"
+  },
+  "show_notification": true
+}

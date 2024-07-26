@@ -1,0 +1,21 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:gold_ingots"
+    },
+    "B": {
+      "item": "camping:blank_upgrade"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "camping:gold_tier_upgrade"
+  },
+  "show_notification": true
+}

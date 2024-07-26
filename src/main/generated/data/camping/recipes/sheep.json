@@ -1,0 +1,24 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:white_wool"
+    },
+    "B": {
+      "item": "minecraft:mutton"
+    },
+    "C": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "item": "camping:sheep"
+  },
+  "show_notification": true
+}

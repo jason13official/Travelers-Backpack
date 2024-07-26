@@ -1,0 +1,24 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:feather"
+    },
+    "B": {
+      "item": "camping:standard"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    "CCC"
+  ],
+  "result": {
+    "item": "camping:chicken"
+  },
+  "show_notification": true
+}

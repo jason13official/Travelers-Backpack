@@ -82,7 +82,7 @@ fabricApi {
 }
 
 loom {
-	accessWidenerPath = file("src/main/resources/travelersbackpack.accesswidener")
+	accessWidenerPath = file("src/main/resources/camping.accesswidener")
 }
 
 dependencies {

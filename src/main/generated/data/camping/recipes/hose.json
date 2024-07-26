@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "camping:hose_nozzle"
+    },
+    "B": {
+      "tag": "c:green_dyes"
+    }
+  },
+  "pattern": [
+    "ABB",
+    "  B",
+    "  B"
+  ],
+  "result": {
+    "item": "camping:hose"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:porkchop"
+    },
+    "B": {
+      "item": "minecraft:carrot"
+    },
+    "C": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    "AAA"
+  ],
+  "result": {
+    "item": "camping:pig"
+  },
+  "show_notification": true
+}

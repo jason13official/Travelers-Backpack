@@ -1,0 +1,24 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:lapis_block"
+    },
+    "B": {
+      "tag": "c:lapis"
+    },
+    "C": {
+      "item": "camping:standard"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "item": "camping:lapis"
+  },
+  "show_notification": true
+}

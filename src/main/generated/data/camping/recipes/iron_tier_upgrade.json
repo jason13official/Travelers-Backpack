@@ -1,0 +1,21 @@
+{
+  "type": "camping:backpack_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:iron_ingots"
+    },
+    "B": {
+      "item": "camping:blank_upgrade"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "camping:iron_tier_upgrade"
+  },
+  "show_notification": true
+}

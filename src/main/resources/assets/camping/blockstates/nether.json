@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "camping:block/nether" },
+    "facing=east": { "model": "camping:block/nether","y":270 },
+    "facing=west": { "model": "camping:block/nether","y":90 },
+    "facing=north": { "model": "camping:block/nether","y":180 }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "camping:block/redstone" },
+    "facing=east": { "model": "camping:block/redstone","y":270 },
+    "facing=west": { "model": "camping:block/redstone","y":90 },
+    "facing=north": { "model": "camping:block/redstone","y":180 }
+  }
+}
